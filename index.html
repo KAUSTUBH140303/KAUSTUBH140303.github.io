@@ -1,870 +1,456 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kaustubh Singh | Robotics Researcher</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --bg-dark: #0a0e27;
-            --bg-darker: #060914;
-            --panel-bg: #0f1729;
-            --accent-blue: #00d4ff;
-            --accent-purple: #a78bfa;
-            --text-primary: #e5e7eb;
-            --text-secondary: #9ca3af;
-            --border: #1f2937;
-            --hover-bg: #1a2332;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: var(--bg-dark);
-            color: var(--text-primary);
-            line-height: 1.6;
-        }
-
-        .container {
-            display: flex;
-            min-height: 100vh;
-        }
-
-        /* Left Panel */
-        .left-panel {
-            width: 350px;
-            background: var(--panel-bg);
-            position: fixed;
-            height: 100vh;
-            overflow-y: auto;
-            border-right: 1px solid var(--border);
-            padding: 3rem 2rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .profile-image {
-            width: 180px;
-            height: 180px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            font-weight: 700;
-            color: var(--bg-dark);
-        }
-
-        .profile-name {
-            font-size: 1.8rem;
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-            text-align: center;
-        }
-
-        .profile-title {
-            font-size: 1.1rem;
-            color: var(--accent-blue);
-            margin-bottom: 0.3rem;
-            text-align: center;
-        }
-
-        .profile-location {
-            font-size: 0.95rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .nav-menu {
-            width: 100%;
-            margin-bottom: 2rem;
-        }
-
-        .nav-menu a {
-            display: block;
-            padding: 0.9rem 1.2rem;
-            color: var(--text-secondary);
-            text-decoration: none;
-            border-radius: 8px;
-            margin-bottom: 0.5rem;
-            transition: all 0.3s;
-            font-weight: 500;
-        }
-
-        .nav-menu a:hover,
-        .nav-menu a.active {
-            background: var(--hover-bg);
-            color: var(--accent-blue);
-        }
-
-        .education-section {
-            width: 100%;
-            margin-bottom: 2rem;
-            padding-top: 2rem;
-            border-top: 1px solid var(--border);
-        }
-
-        .education-section h3 {
-            font-size: 1rem;
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        .edu-item {
-            margin-bottom: 1.5rem;
-        }
-
-        .edu-item h4 {
-            font-size: 0.95rem;
-            color: var(--text-primary);
-            margin-bottom: 0.3rem;
-        }
-
-        .edu-item .degree {
-            font-size: 0.85rem;
-            color: var(--text-secondary);
-            margin-bottom: 0.2rem;
-        }
-
-        .edu-item .gpa {
-            font-size: 0.85rem;
-            color: var(--accent-purple);
-        }
-
-        .action-buttons {
-            width: 100%;
-            display: flex;
-            flex-direction: column;
-            gap: 0.8rem;
-        }
-
-        .btn {
-            padding: 0.9rem 1.5rem;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 600;
-            text-align: center;
-            transition: all 0.3s;
-            display: block;
-            font-size: 0.95rem;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, var(--accent-blue), var(--accent-purple));
-            color: var(--bg-dark);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--accent-blue);
-            border: 1px solid var(--accent-blue);
-        }
-
-        .btn-secondary:hover {
-            background: var(--accent-blue);
-            color: var(--bg-dark);
-        }
-
-        .social-links {
-            display: flex;
-            gap: 1rem;
-            margin-top: 2rem;
-        }
-
-        .social-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-            font-size: 1.3rem;
-        }
-
-        .social-links a:hover {
-            color: var(--accent-blue);
-        }
-
-        /* Right Panel */
-        .right-panel {
-            margin-left: 350px;
-            flex: 1;
-            padding: 3rem 4rem;
-            max-width: 1200px;
-        }
-
-        section {
-            margin-bottom: 5rem;
-        }
-
-        .section-title {
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 2rem;
-            color: var(--text-primary);
-            position: relative;
-            padding-bottom: 0.5rem;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 60px;
-            height: 3px;
-            background: linear-gradient(90deg, var(--accent-blue), var(--accent-purple));
-        }
-
-        /* About Section */
-        .about-text {
-            font-size: 1.1rem;
-            line-height: 1.8;
-            color: var(--text-secondary);
-            margin-bottom: 1.5rem;
-        }
-
-        .research-focus {
-            background: var(--panel-bg);
-            padding: 1.5rem;
-            border-radius: 10px;
-            border-left: 3px solid var(--accent-blue);
-            margin-top: 2rem;
-        }
-
-        .research-focus h3 {
-            color: var(--accent-blue);
-            margin-bottom: 0.8rem;
-            font-size: 1.1rem;
-        }
-
-        .research-focus p {
-            color: var(--text-secondary);
-        }
-
-        /* Experience Section */
-        .experience-item {
-            background: var(--panel-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            margin-bottom: 2rem;
-            border-left: 3px solid var(--accent-purple);
-            transition: transform 0.3s;
-        }
-
-        .experience-item:hover {
-            transform: translateX(5px);
-        }
-
-        .experience-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-            margin-bottom: 1rem;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-
-        .experience-item h3 {
-            font-size: 1.3rem;
-            color: var(--text-primary);
-            margin-bottom: 0.3rem;
-        }
-
-        .experience-item .company {
-            color: var(--accent-blue);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-item .date {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        .experience-item p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: var(--panel-bg);
-            border-radius: 10px;
-            padding: 2rem;
-            border: 1px solid var(--border);
-            transition: all 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-blue);
-            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.1);
-        }
-
-        .project-card h3 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .project-card p {
-            color: var(--text-secondary);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-            font-size: 0.95rem;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .tag {
-            background: var(--bg-dark);
-            color: var(--accent-blue);
-            padding: 0.3rem 0.8rem;
-            border-radius: 15px;
-            font-size: 0.8rem;
-            border: 1px solid var(--border);
-        }
-
-        /* Publications */
-        .publication-item {
-            background: var(--panel-bg);
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 10px;
-            border-left: 3px solid var(--accent-blue);
-        }
-
-        .publication-item h3 {
-            color: var(--text-primary);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-            line-height: 1.4;
-        }
-
-        .publication-item .authors {
-            color: var(--text-secondary);
-            margin-bottom: 0.5rem;
-            font-size: 0.9rem;
-            font-style: italic;
-        }
-
-        .publication-item .venue {
-            color: var(--accent-purple);
-            font-weight: 600;
-            margin-bottom: 1rem;
-        }
-
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .skill-category {
-            background: var(--panel-bg);
-            padding: 1.8rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-        }
-
-        .skill-category h3 {
-            color: var(--accent-blue);
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            padding: 0.6rem 0;
-            color: var(--text-secondary);
-            border-bottom: 1px solid var(--border);
-            font-size: 0.95rem;
-        }
-
-        .skill-category li:last-child {
-            border-bottom: none;
-        }
-
-        /* Awards Grid */
-        .awards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 1.5rem;
-        }
-
-        .award-card {
-            background: var(--panel-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .award-card:hover {
-            border-color: var(--accent-purple);
-            transform: translateY(-3px);
-        }
-
-        .award-card h3 {
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
-        }
-
-        .award-card .date {
-            color: var(--accent-purple);
-            font-weight: 600;
-            margin-bottom: 0.8rem;
-            font-size: 0.9rem;
-        }
-
-        .award-card p {
-            color: var(--text-secondary);
-            font-size: 0.9rem;
-        }
-
-        /* Contact */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
-
-        .contact-card {
-            background: var(--panel-bg);
-            padding: 2rem;
-            border-radius: 10px;
-            border: 1px solid var(--border);
-            text-align: center;
-            transition: all 0.3s;
-        }
-
-        .contact-card:hover {
-            border-color: var(--accent-blue);
-            transform: translateY(-3px);
-        }
-
-        .contact-card h3 {
-            color: var(--accent-blue);
-            margin-bottom: 0.8rem;
-            font-size: 1rem;
-        }
-
-        .contact-card a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .contact-card a:hover {
-            color: var(--accent-blue);
-        }
-
-        /* Responsive */
-        @media (max-width: 1024px) {
-            .left-panel {
-                width: 280px;
-            }
-
-            .right-panel {
-                margin-left: 280px;
-                padding: 2rem;
-            }
-        }
-
-        @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
-            }
-
-            .left-panel {
-                width: 100%;
-                position: relative;
-                height: auto;
-                border-right: none;
-                border-bottom: 1px solid var(--border);
-            }
-
-            .right-panel {
-                margin-left: 0;
-                padding: 2rem 1.5rem;
-            }
-
-            .projects-grid {
-                grid-template-columns: 1fr;
-            }
-        }
-
-        /* Smooth Scrolling */
-        html {
-            scroll-behavior: smooth;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: var(--bg-darker);
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: var(--border);
-            border-radius: 4px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: var(--accent-blue);
-        }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Kaustubh Singh — Research Profile</title>
+  <meta name="description" content="Kaustubh Singh — research profile: optimal control, RL, bio-inspired robotics, physics-informed modeling." />
+
+  <!-- Basic styles (all in one file) -->
+  <style>
+    :root{
+      --bg:#f6fbfd;
+      --card:#ffffff;
+      --muted:#6b7280;
+      --accent:#f6b42c; /* warm yellow */
+      --accent-2:#0f1724; /* dark slate */
+      --maxw:1100px;
+      --shadow: 0 8px 20px rgba(15,23,36,0.06);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+    html,body{height:100%}
+    body{
+      margin:0;
+      background:linear-gradient(180deg, #f7fbfd 0%, #ffffff 30%);
+      color:#0f1724;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      line-height:1.5;
+    }
+    a{color:var(--accent-2); text-decoration:none}
+    header{
+      background:rgba(255,255,255,0.9);
+      backdrop-filter: blur(6px);
+      position:sticky;
+      top:0;
+      z-index:30;
+      border-bottom:1px solid rgba(15,23,36,0.04);
+    }
+    .nav{
+      max-width:var(--maxw);
+      margin:0 auto;
+      display:flex;
+      gap:16px;
+      align-items:center;
+      padding:12px 20px;
+    }
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      margin-right:auto;
+    }
+    .brand img{
+      width:36px;height:36px;border-radius:999px;object-fit:cover;border:2px solid rgba(15,23,36,0.06)
+    }
+    .brand h1{font-size:16px;margin:0;font-weight:700}
+    nav ul{display:flex;gap:10px;list-style:none;margin:0;padding:0}
+    nav a{padding:8px 10px;border-radius:8px;font-size:14px;color:var(--accent-2)}
+    nav a.active, nav a:hover{background:rgba(15,23,36,0.04)}
+    .btn-resume{
+      background:var(--accent);
+      color:#fff;padding:9px 14px;border-radius:10px;font-weight:600;box-shadow:var(--shadow)
+    }
+
+    main{max-width:var(--maxw);margin:28px auto;padding:16px}
+
+    /* Hero */
+    .hero{
+      display:grid;
+      grid-template-columns:120px 1fr;
+      gap:28px;
+      align-items:center;
+      padding:36px;
+      background:linear-gradient(180deg,#f2fbff, #ffffff);
+      border-radius:14px;
+      box-shadow:var(--shadow);
+    }
+    .avatar{
+      width:120px;height:120px;border-radius:999px;background:#e6eef4;display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--muted);overflow:hidden;border:6px solid #fff;
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .hero h2{font-size:34px;margin:0 0 6px 0}
+    .hero p.lead{margin:0;color:var(--muted);font-size:15px}
+
+    .hero .cta{margin-top:16px;display:flex;gap:12px;align-items:center}
+    .btn{padding:10px 14px;border-radius:10px;border:1px solid rgba(15,23,36,0.08);background:#fff;font-weight:600;cursor:pointer}
+    .btn-outline{background:transparent}
+    .small-muted{color:var(--muted);font-size:13px}
+
+    /* Sections */
+    section{margin-top:36px}
+    .card{
+      background:var(--card);padding:22px;border-radius:12px;box-shadow:var(--shadow)
+    }
+
+    .two-col{
+      display:grid;
+      grid-template-columns:1fr 320px;
+      gap:26px;
+      align-items:start;
+    }
+
+    /* About & Research */
+    .about p{color:var(--muted);margin:0 0 12px 0}
+    .pill{display:inline-block;background:#fff7e6;border:1px solid rgba(246,180,44,0.18);padding:6px 10px;border-radius:999px;margin:6px 6px 6px 0;font-size:13px}
+
+    /* Timeline / Experience */
+    .timeline{position:relative;padding-left:26px}
+    .timeline::before{content:"";position:absolute;left:8px;top:6px;bottom:6px;width:2px;background:linear-gradient(#f6b42c,#f59e0b);border-radius:2px}
+    .t-item{position:relative;margin-bottom:20px;padding-left:12px}
+    .t-item .dot{position:absolute;left:-2px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--accent);box-shadow:0 4px 10px rgba(246,180,44,0.2)}
+    .t-item h4{margin:0 0 6px 0}
+    .t-item p{margin:0;color:var(--muted);font-size:14px}
+
+    /* Skills */
+    .skills-grid{display:flex;flex-wrap:wrap;gap:8px}
+    .skill{background:#fff;padding:8px 12px;border-radius:999px;border:1px solid rgba(15,23,36,0.04);font-weight:600;font-size:13px;color:var(--accent-2)}
+
+    /* Publications / Projects */
+    .pub-list, .proj-list{display:flex;flex-direction:column;gap:12px}
+    .pub{padding:14px;border-radius:10px;border:1px solid rgba(15,23,36,0.04);background:#fff}
+    .proj{display:grid;grid-template-columns:1fr 160px;gap:12px;align-items:center;padding:14px;border-radius:10px;border:1px solid rgba(15,23,36,0.04);background:#fff}
+    .proj .meta{color:var(--muted);font-size:13px}
+    .video-placeholder{background:#eef6fb;border-radius:8px;height:100px;display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:600}
+
+    footer{margin-top:36px;padding:30px 10px;background:transparent;text-align:center;color:var(--muted)}
+    .socials{display:flex;gap:12px;justify-content:center;margin-bottom:12px}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .two-col{grid-template-columns:1fr}
+      .hero{grid-template-columns:84px 1fr;padding:22px}
+      .hero h2{font-size:24px}
+      .proj{grid-template-columns:1fr}
+      .avatar{width:84px;height:84px}
+      nav ul{display:none}
+    }
+    /* Accessibility focus */
+    a:focus, button:focus {outline:3px solid rgba(15,23,36,0.08);outline-offset:2px}
+  </style>
 </head>
 <body>
-    <div class="container">
-        <!-- Left Panel -->
-        <aside class="left-panel">
-            <div class="profile-image">KS</div>
-            <h1 class="profile-name">Kaustubh Singh</h1>
-            <p class="profile-title">Robotics Researcher</p>
-            <p class="profile-location">Mumbai, India</p>
 
-            <nav class="nav-menu">
-                <a href="#about" class="active">About</a>
-                <a href="#experience">Experience</a>
-                <a href="#projects">Projects</a>
-                <a href="#publications">Publications</a>
-                <a href="#skills">Skills</a>
-                <a href="#awards">Awards</a>
-                <a href="#contact">Contact</a>
-            </nav>
+  <!-- Header / Nav -->
+  <header>
+    <div class="nav" role="navigation" aria-label="Primary">
+      <div class="brand">
+        <img src="profile-placeholder.png" alt="Profile picture placeholder">
+        <div>
+          <h1>Kaustubh Singh</h1>
+          <div style="font-size:12px;color:var(--muted)">Robotics • Optimal Control • RL</div>
+        </div>
+      </div>
 
-            <div class="education-section">
-                <h3>Education</h3>
-                <div class="edu-item">
-                    <h4>Plaksha University</h4>
-                    <p class="degree">B.Tech. Robotics & Autonomous Systems</p>
-                    <p class="gpa">CGPA: 9.46/10.00</p>
-                </div>
-                <div class="edu-item">
-                    <h4>City Montessori School</h4>
-                    <p class="degree">Indian School Certificate</p>
-                    <p class="gpa">98.25%</p>
-                </div>
-            </div>
+      <nav aria-label="Main navigation">
+        <ul>
+          <li><a href="#about" class="active">About</a></li>
+          <li><a href="#research">Research</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#pubs">Publications</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
 
-            <div class="action-buttons">
-                <a href="https://drive.google.com/your-resume-link" target="_blank" class="btn btn-primary">Download CV</a>
-                <a href="#contact" class="btn btn-secondary">Get In Touch</a>
-            </div>
-
-            <div class="social-links">
-                <a href="mailto:ksingh140303@gmail.com" title="Email">✉</a>
-                <a href="https://linkedin.com/in/kaustubhsingh1403" target="_blank" title="LinkedIn">in</a>
-                <a href="https://github.com/KAUSTUBH140303" target="_blank" title="GitHub">gh</a>
-            </div>
-        </aside>
-
-        <!-- Right Panel -->
-        <main class="right-panel">
-            <!-- About Section -->
-            <section id="about">
-                <h2 class="section-title">About</h2>
-                <p class="about-text">
-                    I am a robotics engineer and researcher passionate about developing intelligent autonomous systems. Currently working as a Project Associate at IIT Bombay's Department of Aerospace Engineering, I focus on Venus atmospheric dynamics and autonomous airship control systems.
-                </p>
-                <p class="about-text">
-                    My research combines rigorous mathematical modeling with practical implementation to create robust, efficient robotic systems. I have extensive experience in reinforcement learning, optimal control, and bio-inspired robotics, with applications spanning underwater vehicles, aerial systems, and environmental monitoring.
-                </p>
-                <div class="research-focus">
-                    <h3>Research Focus</h3>
-                    <p>Optimal control, reinforcement learning, bio-inspired robotics, and physics-informed modeling for control systems in autonomous vehicles and environmental applications.</p>
-                </div>
-            </section>
-
-            <!-- Experience Section -->
-            <section id="experience">
-                <h2 class="section-title">Experience</h2>
-                
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Project Associate (Engineer)</h3>
-                            <p class="company">IIT Bombay - Dept. of Aerospace Engineering</p>
-                        </div>
-                        <p class="date">Sep 2025 – Present</p>
-                    </div>
-                    <p>Leading research on Venus atmospheric dynamics and autonomous airship mission design. Developing neural network models for atmospheric parameter prediction and designing control systems for latitude mobility in extreme wind conditions. Building simulation tools for trajectory testing and energy flux estimation.</p>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Research Intern</h3>
-                            <p class="company">UC San Diego - Halıcıoğlu Data Science Institute</p>
-                        </div>
-                        <p class="date">Aug 2024 – Jan 2025</p>
-                    </div>
-                    <p>Developed reinforcement learning frameworks for social navigation and HVAC control using NVIDIA Isaac Sim and PyTorch. Designed IRB-approved VR intervention studies with interactive scenarios and statistical pipelines. Built IoT sensor networks for real-time aerosol monitoring with ESP8266 and Sensirion sensors.</p>
-                </div>
-
-                <div class="experience-item">
-                    <div class="experience-header">
-                        <div>
-                            <h3>Research Intern</h3>
-                            <p class="company">UC San Diego - Halıcıoğlu Data Science Institute</p>
-                        </div>
-                        <p class="date">Jul 2023 – Sep 2023</p>
-                    </div>
-                    <p>Engineered a dual-agent UGV platform with cough-emulation robot and mobile HEPA filter. Developed IoT-based data infrastructure on Raspberry Pi with UPS backup and wireless streaming, ensuring uninterrupted environmental monitoring during robotic experiments.</p>
-                </div>
-            </section>
-
-            <!-- Projects Section -->
-            <section id="projects">
-                <h2 class="section-title">Projects</h2>
-                <div class="projects-grid">
-                    <div class="project-card">
-                        <h3>RL Simulation for Underactuated Robotic Fish</h3>
-                        <p>Developed a biomimetic robotic fish agent in FishGym with PPO reinforcement learning for underwater navigation. Implemented multi-component reward functions for cruising and path-following behaviors.</p>
-                        <div class="project-tags">
-                            <span class="tag">Reinforcement Learning</span>
-                            <span class="tag">Biomimetics</span>
-                            <span class="tag">PPO</span>
-                        </div>
-                        <a href="#" class="btn btn-secondary">Watch Video</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Satellite-Based Air Pollution Forecasting</h3>
-                        <p>ConvLSTM-based deep learning framework for spatiotemporal forecasting of aerosol pollution across India. Achieved R² = 0.85 by integrating Sentinel-5P TROPOMI and ERA5 reanalysis data.</p>
-                        <div class="project-tags">
-                            <span class="tag">Deep Learning</span>
-                            <span class="tag">ConvLSTM</span>
-                            <span class="tag">Geospatial Analysis</span>
-                        </div>
-                        <a href="#" class="btn btn-secondary">View Details</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>WINDEGY - Vertical Axis Wind Turbines</h3>
-                        <p>Led design and fabrication of three hybrid VAWT prototypes. Developed wind testing facility generating speeds up to 17 m/s. Won SP Dutt Award for Innovation and Impact.</p>
-                        <div class="project-tags">
-                            <span class="tag">Green Energy</span>
-                            <span class="tag">Mechanical Design</span>
-                            <span class="tag">Prototyping</span>
-                        </div>
-                        <a href="#" class="btn btn-secondary">Watch Video</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Quadruped Robot Control</h3>
-                        <p>Developed autonomous quadruped robot with computer vision capabilities. Programmed walking gaits and integrated RGBD camera for visual navigation and object detection.</p>
-                        <div class="project-tags">
-                            <span class="tag">Robotics</span>
-                            <span class="tag">Computer Vision</span>
-                            <span class="tag">Control Systems</span>
-                        </div>
-                        <a href="#" class="btn btn-secondary">Watch Video</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Self-Balancing Robot</h3>
-                        <p>Implemented PID control for inverted pendulum dynamics. Real-time system identification and control design for robust balancing performance.</p>
-                        <div class="project-tags">
-                            <span class="tag">Control Theory</span>
-                            <span class="tag">System Dynamics</span>
-                            <span class="tag">Embedded Systems</span>
-                        </div>
-                        <a href="#" class="btn btn-secondary">Watch Video</a>
-                    </div>
-
-                    <div class="project-card">
-                        <h3>Magnetohydrodynamic Propulsion</h3>
-                        <p>Integration of MHD drive with flipper-type propulsion for underwater vehicles. Novel propulsion mechanism for silent, efficient underwater navigation.</p>
-                        <div class="project-tags">
-                            <span class="tag">Fluid Dynamics</span>
-                            <span class="tag">Marine Robotics</span>
-                        </div>
-                        <a href="#" class="btn btn-secondary">Watch Video</a>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Publications Section -->
-            <section id="publications">
-                <h2 class="section-title">Publications</h2>
-                
-                <div class="publication-item">
-                    <h3>AeroSafe: Mobile Indoor Air Purification using Aerosol Residence Time Analysis and Robotic Cough Emulator Testbed</h3>
-                    <p class="authors">M. Tanjid Hasan Tonmoy, Rahath Malladi, Kaustubh Singh, Forsad Al Hossain, Rajesh Gupta, Andrés E. Tejada-Martínez, Tauhidur Rahman</p>
-                    <p class="venue">IEEE International Conference on Robotics and Automation (ICRA) 2025</p>
-                    <a href="#" class="btn btn-secondary">Conference Paper</a>
-                </div>
-
-                <div class="publication-item">
-                    <h3>Underactuated Biomimetic Autonomous Underwater Vehicle for Ecosystem Monitoring</h3>
-                    <p class="authors">Sandeep Manjanna, Kaustubh Singh, Shivam Kumar, Mangesh Singh, Shreyas Kannan, Shashikant Pawar</p>
-                    <p class="venue">IEEE ICRA Workshop on Robots for Understanding Natural Ecosystems 2024</p>
-                    <a href="#" class="btn btn-secondary">Poster Presentation</a>
-                </div>
-            </section>
-
-            <!-- Skills Section -->
-            <section id="skills">
-                <h2 class="section-title">Skills</h2>
-                <div class="skills-grid">
-                    <div class="skill-category">
-                        <h3>Programming & Simulation</h3>
-                        <ul>
-                            <li>Python, MATLAB, C++, Java</li>
-                            <li>ROS2, Gazebo, Gymnasium</li>
-                            <li>PyTorch, TensorFlow</li>
-                            <li>Simulink, Phiflow</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Design & Fabrication</h3>
-                        <ul>
-                            <li>CAD - Fusion 360</li>
-                            <li>PCB Design - KiCAD, EAGLE</li>
-                            <li>3D Printing & Prototyping</li>
-                            <li>Mechanical System Design</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Electronics & Embedded</h3>
-                        <ul>
-                            <li>Raspberry Pi, Arduino</li>
-                            <li>ESP32, XIAO ESP32S3</li>
-                            <li>IoT Systems Development</li>
-                            <li>Sensor Integration</li>
-                        </ul>
-                    </div>
-                    <div class="skill-category">
-                        <h3>Research Areas</h3>
-                        <ul>
-                            <li>Reinforcement Learning</li>
-                            <li>Optimal Control Theory</li>
-                            <li>Computer Vision</li>
-                            <li>Bio-inspired Robotics</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Awards Section -->
-            <section id="awards">
-                <h2 class="section-title">Awards</h2>
-                <div class="awards-grid">
-                    <div class="award-card">
-                        <h3>Academic Achievement Award</h3>
-                        <p class="date">August 2025</p>
-                        <p>Highest CGPA in Robotics and Autonomous Systems</p>
-                    </div>
-                    <div class="award-card">
-                        <h3>Dean's List Award</h3>
-                        <p class="date">November 2024</p>
-                        <p>Academic Distinction 2023-24</p>
-                    </div>
-                    <div class="award-card">
-                        <h3>Dean's List Award</h3>
-                        <p class="date">December 2023</p>
-                        <p>Academic Distinction 2022-23</p>
-                    </div>
-                    <div class="award-card">
-                        <h3>SP Dutt Award</h3>
-                        <p class="date">March 2023</p>
-                        <p>Gold Medal for Innovation in Green Energy</p>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Contact Section -->
-            <section id="contact">
-                <h2 class="section-title">Contact</h2>
-                <p class="about-text">I'm always interested in discussing research collaborations, innovative projects, or opportunities in robotics and autonomous systems.</p>
-                <div class="contact-grid">
-                    <div class="contact-card">
-                        <h3>Email</h3>
-                        <a href="mailto:ksingh140303@gmail.com">ksingh140303@gmail.com</a>
-                    </div>
-                    <div class="contact-card">
-                        <h3>LinkedIn</h3>
-                        <a href="https://linkedin.com/in/kaustubhsingh1403" target="_blank">kaustubhsingh1403</a>
-                    </div>
-                    <div class="contact-card">
-                        <h3>GitHub</h3>
-                        <a href="https://github.com/KAUSTUBH140303" target="_blank">KAUSTUBH140303</a>
-                    </div>
-                </div>
-            </section>
-        </main>
+      <a class="btn-resume" href="Kaustubh_Singh_CV.pdf" target="_blank" rel="noopener">Download CV</a>
     </div>
+  </header>
 
-    <script>
-        // Smooth scroll and active nav
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelectorAll('.nav-menu a').forEach(a => a.classList.remove('active'));
-                this.classList.add('active');
-                
-                const target = document.querySelector(this.getAttribute('href'));
-                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-            });
-        });
+  <main>
+    <!-- Hero -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="avatar" aria-hidden="true">
+        <!-- placeholder, replace with profile.jpg -->
+        <img src="profile-placeholder.png" alt="Profile photo placeholder">
+      </div>
 
-        // Update active nav on scroll
-        window.addEventListener('scroll', () => {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
+      <div>
+        <h2 id="hero-heading">Kaustubh Singh</h2>
+        <div style="font-weight:600;color:var(--muted)">B.Tech Robotics & Autonomous Systems — Research in optimal control, RL, and bio-inspired robotics</div>
 
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+        <p class="lead" style="margin-top:10px">
+          I build physics-informed and learning-based systems for control and autonomy — spanning optimal control, reinforcement learning, and bio-inspired hardware. I enjoy building end-to-end simulation-to-real pipelines, from model and learning development to embedded deployment.
+        </p>
+
+        <div class="cta">
+          <a class="btn" href="#projects">View Projects</a>
+          <a class="btn btn-outline" href="Kaustubh_Singh_CV.pdf" target="_blank" rel="noopener">View Résumé</a>
+          <span style="margin-left:8px" class="small-muted">• <a href="mailto:ksingh140303@gmail.com">ksingh140303@gmail.com</a></span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Two column: About + Side card -->
+    <section id="about" class="two-col" aria-label="About and quick links">
+      <div>
+        <div class="card about" role="article" aria-labelledby="about-title">
+          <h3 id="about-title">About</h3>
+          <p>
+            I am focused on control and learning for robotics and autonomy, with practical experience building RL frameworks, physics-informed models, and hardware prototypes. My work spans simulation, algorithm design, and embedded deployment for resource-constrained platforms.
+          </p>
+
+          <h4 style="margin-top:10px">Research focus</h4>
+          <p class="small-muted">
+            Optimal control, reinforcement learning, bio-inspired robotics, and physics-informed modeling for control and autonomy. (Filled from my CV.) :contentReference[oaicite:1]{index=1}
+          </p>
+
+          <h4 style="margin-top:14px">Key skills</h4>
+          <div class="skills-grid" aria-hidden="false">
+            <!-- A few core skill pills; replace/extend -->
+            <span class="skill">Python</span>
+            <span class="skill">PyTorch</span>
+            <span class="skill">Reinforcement Learning</span>
+            <span class="skill">Optimal Control</span>
+            <span class="skill">ROS2 & Gazebo</span>
+            <span class="skill">Embedded Systems</span>
+            <span class="skill">Sim2Real</span>
+            <span class="skill">Design & Fabrication</span>
+          </div>
+        </div>
+
+      </div>
+
+      <aside>
+        <div class="card" role="complementary" aria-labelledby="quick-links">
+          <h4 id="quick-links">Quick Links</h4>
+          <p class="small-muted">Resume, code & portfolio</p>
+
+          <div style="margin-top:10px;display:flex;flex-direction:column;gap:8px">
+            <a class="btn" href="Kaustubh_Singh_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+            <a class="btn btn-outline" href="https://ksingh.vercel.app" target="_blank" rel="noopener">Portfolio / Website</a>
+            <a class="btn btn-outline" href="https://github.com/KAUSTUBH140303" target="_blank" rel="noopener">GitHub</a>
+            <a class="btn btn-outline" href="https://www.linkedin.com/in/kaustubhsingh1403/" target="_blank" rel="noopener">LinkedIn</a>
+          </div>
+        </div>
+
+        <div style="height:16px"></div>
+
+        <div class="card" aria-labelledby="education">
+          <h4 id="education">Education</h4>
+          <p style="margin:6px 0 0 0" class="small-muted">
+            B.Tech. in Robotics & Autonomous Systems. (High-level info from CV.) :contentReference[oaicite:2]{index=2}
+          </p>
+        </div>
+      </aside>
+    </section>
+
+    <!-- Research / Projects -->
+    <section id="research">
+      <h3>Selected Projects</h3>
+      <div style="margin-top:12px" class="proj-list">
+        <!-- Project 1 -->
+        <div class="proj" role="article" aria-labelledby="proj1">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <h4 id="proj1" style="margin:0">AeroSafe — Mobile Indoor Air Purification</h4>
+              <div class="meta">ICRA 2025</div>
+            </div>
+            <p class="small-muted" style="margin-top:8px">
+              Mobile air purification system using aerosol residence time analysis and robotic cough emulator — published at ICRA 2025. (From CV.) :contentReference[oaicite:3]{index=3}
+            </p>
+            <div style="margin-top:10px">
+              <a class="btn" href="#" aria-label="View AeroSafe demo (placeholder)">Demo (placeholder)</a>
+              <a class="btn btn-outline" href="#" aria-label="AeroSafe source (placeholder)">Code</a>
+            </div>
+          </div>
+          <div>
+            <div class="video-placeholder" aria-hidden="true">Video placeholder</div>
+          </div>
+        </div>
+
+        <!-- Project 2 -->
+        <div class="proj" role="article" aria-labelledby="proj2">
+          <div>
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <h4 id="proj2" style="margin:0">Underactuated Robotic Fish — RL Simulation</h4>
+              <div class="meta">2024</div>
+            </div>
+            <p class="small-muted" style="margin-top:8px">
+              Biomimetic robotic fish trained with PPO, continuous control and sim-to-real considerations. (From CV.) :contentReference[oaicite:4]{index=4}
+            </p>
+            <div style="margin-top:10px">
+              <a class="btn" href="#" aria-label="View Robotic Fish demo (placeholder)">Demo (placeholder)</a>
+              <a class="btn btn-outline" href="#" aria-label="Project repo (placeholder)">Code</a>
+            </div>
+          </div>
+          <div>
+            <div class="video-placeholder" aria-hidden="true">Video placeholder</div>
+          </div>
+        </div>
+
+        <!-- More projects (placeholder entries) -->
+        <div class="proj" role="article" aria-labelledby="proj3">
+          <div>
+            <h4 id="proj3" style="margin:0">Satellite-based Air Pollution Forecasting</h4>
+            <p class="small-muted" style="margin-top:8px">ConvLSTM-based spatiotemporal model for aerosol forecasting. (From CV.) :contentReference[oaicite:5]{index=5}</p>
+            <div style="margin-top:10px">
+              <a class="btn" href="#" aria-label="View project (placeholder)">Details</a>
+            </div>
+          </div>
+          <div>
+            <div class="video-placeholder" aria-hidden="true">Image / plot placeholder</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Publications -->
+    <section id="pubs">
+      <h3>Selected Publications</h3>
+      <div style="margin-top:12px" class="pub-list">
+        <div class="pub">
+          <strong>AeroSafe: Mobile Indoor Air Purification using Aerosol Residence Time Analysis and Robotic Cough Emulator Testbed.</strong>
+          <div class="small-muted" style="margin-top:6px">ICRA 2025 — Kaustubh Singh et al.</div>
+        </div>
+
+        <div class="pub">
+          <strong>Underactuated Biomimetic Autonomous Underwater Vehicle for Ecosystem Monitoring (poster)</strong>
+          <div class="small-muted" style="margin-top:6px">ICRA/Workshop 2024 — team poster. (From CV.) :contentReference[oaicite:6]{index=6}</div>
+        </div>
+
+        <!-- A compact "more" link -->
+        <div class="pub" style="text-align:center">
+          <a href="https://ksingh.vercel.app" class="btn">Full list on portfolio</a>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Timeline / Experience -->
+    <section id="experience" aria-labelledby="experience-title">
+      <h3 id="experience-title">Experience & Timeline</h3>
+
+      <div style="margin-top:12px" class="card timeline" role="list">
+        <!-- Item 1 -->
+        <div class="t-item" role="listitem">
+          <span class="dot" aria-hidden="true"></span>
+          <h4>Project Associate — Dept. of Aerospace Engineering, IIT Mumbai</h4>
+          <p class="small-muted">Sep 2025 – Present</p>
+          <p class="small-muted">Working on Venus atmospheric dynamics, trajectory planning, and simulation tools. (From CV.) :contentReference[oaicite:7]{index=7}</p>
+        </div>
+
+        <!-- Item 2 -->
+        <div class="t-item" role="listitem">
+          <span class="dot" aria-hidden="true"></span>
+          <h4>Research Intern — Halıcıoğlu Data Science Institute, UC San Diego</h4>
+          <p class="small-muted">Jul 2023 – Jan 2025</p>
+          <p class="small-muted">Reinforcement learning frameworks for social navigation and HVAC control; IoT sensor networks; UGV platforms. (From CV.) :contentReference[oaicite:8]{index=8}</p>
+        </div>
+
+        <!-- Item 3 -->
+        <div class="t-item" role="listitem">
+          <span class="dot" aria-hidden="true"></span>
+          <h4>Various Projects & Leadership Roles</h4>
+          <p class="small-muted">2022–2025</p>
+          <p class="small-muted">Wind turbine prototypes, RL-based simulators, and prototype vehicles. (From CV.) :contentReference[oaicite:9]{index=9}</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Awards / Education compact -->
+    <section>
+      <div style="display:flex;gap:18px;flex-wrap:wrap">
+        <div class="card" style="flex:1;min-width:260px">
+          <h4>Awards</h4>
+          <ul style="margin-top:8px;color:var(--muted)">
+            <li>Academic Achievement Award — Aug 2025</li>
+            <li>Dean’s List (2023–2024)</li>
+            <li>SP Dutt Award for Innovation — Mar 2023</li>
+          </ul>
+        </div>
+
+        <div class="card" style="flex:1;min-width:260px">
+          <h4>Education</h4>
+          <p class="small-muted" style="margin-top:8px">
+            B.Tech in Robotics and Autonomous Systems — Plaksha University (Oct 2021 – Aug 2025). (From CV.) :contentReference[oaicite:10]{index=10}
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact">
+      <div class="card" style="text-align:center">
+        <h3>Get in Touch</h3>
+        <p class="small-muted">I'm open to research collaborations, internships, and speaking opportunities.</p>
+
+        <div style="margin-top:12px;display:flex;gap:12px;justify-content:center;flex-wrap:wrap">
+          <a class="btn" href="mailto:ksingh140303@gmail.com">Email</a>
+          <a class="btn btn-outline" href="https://www.linkedin.com/in/kaustubhsingh1403/" target="_blank" rel="noopener">LinkedIn</a>
+          <a class="btn btn-outline" href="https://github.com/KAUSTUBH140303" target="_blank" rel="noopener">GitHub</a>
+        </div>
+
+        <p class="small-muted" style="margin-top:14px">Or download my résumé: <a href="Kaustubh_Singh_CV.pdf" target="_blank" rel="noopener">Kaustubh_Singh_CV.pdf</a></p>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="socials" aria-hidden="false">
+        <a aria-label="LinkedIn" href="https://www.linkedin.com/in/kaustubhsingh1403/" target="_blank" rel="noopener">LinkedIn</a>
+        <a aria-label="GitHub" href="https://github.com/KAUSTUBH140303" target="_blank" rel="noopener">GitHub</a>
+        <a aria-label="Portfolio" href="https://ksingh.vercel.app" target="_blank" rel="noopener">Portfolio</a>
+      </div>
+
+      <div style="font-size:13px;color:var(--muted)">© <span id="year"></span> Kaustubh Singh — Research profile</div>
+    </footer>
+
+  </main>
+
+  <!-- Simple JS for interactions -->
+  <script>
+    // fill current year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Smooth scrolling for in-page nav
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click', e=>{
+        const href = a.getAttribute('href');
+        if(!href || href === '#') return;
+        e.preventDefault();
+        const el = document.querySelector(href);
+        if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+      })
+    });
+
+    // Set "active" nav by scroll
+    const sections = Array.from(document.querySelectorAll('main section[id]'));
+    const navLinks = Array.from(document.querySelectorAll('nav a'));
+    function onScroll(){
+      let idx = sections.findIndex(s=>{
+        const r = s.getBoundingClientRect();
+        return r.top <= 120 && r.bottom > 120;
+      });
+      navLinks.forEach(n=>n.classList.remove('active'));
+      if(idx >= 0){
+        const id = sections[idx].id;
+        const link = document.querySelector('nav a[href="#'+id+'"]');
+        if(link) link.classList.add('active');
+      }
+    }
+    window.addEventListener('scroll', onScroll, {passive:true});
+    onScroll();
+
+    // Accessibility: keyboard shortcut to contact (press 'c')
+    window.addEventListener('keydown', (e)=>{
+      if(e.key === 'c' && !e.metaKey && !e.ctrlKey && !e.altKey){
+        const contact = document.querySelector('#contact');
+        if(contact) contact.scrollIntoView({behavior:'smooth'});
+      }
+    });
+  </script>
 </body>
 </html>
