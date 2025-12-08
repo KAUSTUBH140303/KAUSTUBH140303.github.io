@@ -1,543 +1,271 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Kaustubh Singh | Robotics & Autonomous Systems</title>
-    <style>
-        /* --- CSS VARIABLES & THEME SETUP --- */
-        :root {
-            /* Light Mode Default */
-            --bg-body: #ffffff;
-            --bg-card: #f8f9fa;
-            --text-main: #1a1a1a;
-            --text-muted: #555555;
-            --accent-color: #000000; /* Replaced Gold with Black */
-            --accent-hover: #333333;
-            --border-color: #e0e0e0;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-        }
-
-        [data-theme="dark"] {
-            /* Dark Mode Overrides */
-            --bg-body: #121212;
-            --bg-card: #1e1e1e;
-            --text-main: #ffffff;
-            --text-muted: #b0b0b0;
-            --accent-color: #ffffff; /* Replaced Gold with White */
-            --accent-hover: #cccccc;
-            --border-color: #333333;
-            --shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            line-height: 1.6;
-            transition: background-color 0.3s, color 0.3s;
-        }
-
-        /* --- LAYOUT UTILITIES --- */
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        section {
-            padding: 60px 0;
-        }
-
-        h1, h2, h3 {
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-
-        h2 {
-            font-size: 1.8rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 30px;
-            border-bottom: 2px solid var(--accent-color);
-            display: inline-block;
-            padding-bottom: 5px;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* --- BUTTONS --- */
-        .btn {
-            display: inline-block;
-            padding: 10px 24px;
-            background-color: var(--accent-color);
-            color: var(--bg-body); /* Inverted text color */
-            font-weight: 600;
-            border-radius: 4px;
-            border: 2px solid var(--accent-color);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .btn:hover {
-            background-color: transparent;
-            color: var(--accent-color);
-        }
-
-        .btn-outline {
-            background-color: transparent;
-            color: var(--accent-color);
-        }
-
-        .btn-outline:hover {
-            background-color: var(--accent-color);
-            color: var(--bg-body);
-        }
-
-        /* --- HEADER & NAV --- */
-        header {
-            position: sticky;
-            top: 0;
-            background-color: var(--bg-body);
-            z-index: 1000;
-            border-bottom: 1px solid var(--border-color);
-            padding: 15px 0;
-        }
-
-        .nav-flex {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.2rem;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 20px;
-        }
-
-        nav a {
-            font-size: 0.9rem;
-            font-weight: 500;
-            color: var(--text-muted);
-        }
-
-        nav a:hover {
-            color: var(--accent-color);
-        }
-
-        /* --- HERO SECTION --- */
-        .hero {
-            display: flex;
-            flex-direction: column-reverse;
-            gap: 40px;
-            align-items: flex-start;
-            padding-top: 80px;
-        }
-
-        .hero-text h1 {
-            font-size: 3rem;
-            line-height: 1.1;
-            margin-bottom: 15px;
-        }
-
-        .hero-subtitle {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            margin-bottom: 25px;
-            max-width: 600px;
-        }
-
-        .hero-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            background-color: var(--bg-card);
-            border: 2px solid var(--accent-color);
-            overflow: hidden;
-            background-image: url('PLACEHOLDER_IMAGE_URL'); /* REPLACE THIS */
-            background-size: cover;
-            background-position: center;
-        }
-
-        @media (min-width: 768px) {
-            .hero {
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-            }
-            .hero-image {
-                width: 200px;
-                height: 200px;
-            }
-        }
-
-        /* --- TIMELINE (Experience & Education) --- */
-        /* Inspired by screenshots vertical line layout */
-        .timeline-item {
-            position: relative;
-            padding-left: 30px;
-            margin-bottom: 40px;
-            border-left: 2px solid var(--border-color);
-        }
-
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -6px; /* Center on the 2px border */
-            top: 0;
-            width: 10px;
-            height: 10px;
-            border-radius: 50%;
-            background-color: var(--accent-color);
-        }
-
-        .timeline-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-        }
-
-        .timeline-org {
-            font-size: 1rem;
-            font-weight: 600;
-            color: var(--text-main);
-        }
-
-        .timeline-date {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 10px;
-            font-style: italic;
-        }
-
-        .timeline-desc {
-            color: var(--text-muted);
-            font-size: 0.95rem;
-        }
-
-        .timeline-desc ul {
-            margin-left: 20px;
-            margin-top: 5px;
-        }
-
-        /* --- CARDS (Projects & Pubs) --- */
-        .grid-layout {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .grid-layout {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
-        .card {
-            background-color: var(--bg-card);
-            padding: 25px;
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-
-        .card:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow);
-            border-color: var(--accent-color);
-        }
-
-        .card-tag {
-            display: inline-block;
-            font-size: 0.75rem;
-            background-color: var(--border-color); /* Light grey bg */
-            color: var(--text-main);
-            padding: 2px 8px;
-            border-radius: 4px;
-            margin-bottom: 10px;
-        }
-
-        .card-title {
-            font-size: 1.1rem;
-            margin-bottom: 8px;
-        }
-
-        .card-meta {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-            margin-bottom: 15px;
-        }
-
-        /* --- SKILLS --- */
-        .skills-container {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .skill-badge {
-            background-color: var(--bg-card);
-            border: 1px solid var(--border-color);
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
-        }
-
-        /* --- FOOTER --- */
-        footer {
-            text-align: center;
-            padding: 40px 0;
-            border-top: 1px solid var(--border-color);
-            margin-top: 40px;
-            color: var(--text-muted);
-        }
-
-        /* Theme Toggle Button Style */
-        #theme-toggle {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: var(--text-main);
-            font-size: 1.2rem;
-            margin-left: 20px;
-        }
-    </style>
-</head>
-<body>
-
+    
+    <link rel="stylesheet" href="css/styles.css" />
+    
+    </head>
+  <body>
     <header>
-        <div class="container nav-flex">
-            <div class="logo">KAUSTUBH SINGH</div>
-            <nav>
-                <ul>
-                    <li><a href="#about">About</a></li>
-                    <li><a href="#experience">Experience</a></li>
-                    <li><a href="#projects">Projects</a></li>
-                    <li><a href="#publications">Publications</a></li>
-                </ul>
-                <button id="theme-toggle" aria-label="Toggle Dark Mode">◑</button>
-            </nav>
-        </div>
+      <div class="container nav-flex">
+        <div class="logo">KAUSTUBH SINGH</div>
+        <nav class="nav-items">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#publications">Publications</a></li>
+          </ul>
+          <button id="theme-toggle" aria-label="Toggle Dark Mode">◑</button>
+        </nav>
+      </div>
     </header>
 
     <section class="container hero">
-        <div class="hero-text">
-            <h1>Kaustubh Singh</h1>
-            <p class="hero-subtitle">
-                Researcher in Robotics & Autonomous Systems. <br>
-                Specializing in Optimal Control, RL, and Physics-Informed Modeling.
-            </p>
-            <div>
-                <a href="#contact" class="btn">Get in Touch</a>
-                <a href="PLACEHOLDER_LINK_TO_PDF" class="btn btn-outline">View CV</a>
-            </div>
+      <div class="hero-text">
+        <h1>Kaustubh Singh</h1>
+        <p class="hero-subtitle">
+          Researcher in Robotics & Autonomous Systems. <br />
+        </p>
+        <div>
+          <a href="#contact" class="btn">Get in Touch</a>
+          <a href="PLACEHOLDER_LINK_TO_PDF" class="btn btn-outline">View CV</a>
         </div>
-        <div class="hero-image">
-            </div>
+      </div>
+      <div class="hero-image"></div>
     </section>
 
     <section id="about" class="container">
-        <h2>About Me</h2>
-        <p style="color: var(--text-muted); max-width: 800px;">
-            I am a B.Tech graduate in Robotics and Autonomous Systems from Plaksha University with a passion for developing intelligent, closed-loop systems. My research focus lies in <strong>optimal control, reinforcement learning, bio-inspired robotics, and physics-informed modeling</strong>.
-            <br><br>
-            Currently, I am working as a Project Associate at the Department of Aerospace Engineering, IIT Mumbai, studying Venus atmospheric dynamics for autonomous airship trajectory planning.
-        </p>
-    </section>
-
-    <section id="education" class="container">
-        <h2>Education</h2>
-        
-        <div class="timeline-item">
-            <div class="timeline-title">Plaksha University</div>
-            <div class="timeline-org">B.Tech. in Robotics and Autonomous Systems</div>
-            <div class="timeline-date">Oct 2021 - Aug 2025 | CGPA: 9.46/10.00</div>
-            <div class="timeline-desc">
-                <ul>
-                    <li>**Awards:** Academic Achievement Award (Highest CGPA in Major).</li>
-                    <li>Dean's List Award (2022-23, 2023-24).</li>
-                    <li>SP Dutt Award for Innovation and Impact (Gold Medalist).</li>
-                </ul>
-            </div>
-        </div>
-        
-        <div class="timeline-item">
-            <div class="timeline-title">City Montessori School, Gomti Nagar</div>
-            <div class="timeline-org">Indian School Certificate</div>
-            <div class="timeline-date">Apr 2019 - May 2021 | Percentage: 98.25%</div>
-        </div>
+      <h2>About Me</h2>
+      <p style="color: var(--text-muted); max-width: 800px">
+        I am a B.Tech graduate in Robotics and Autonomous Systems from Plaksha
+        University with a passion for robotics and autonomous systems. My research focus lies in
+        <strong
+          >optimal control, reinforcement learning, bio-inspired robotics, and
+          physics-informed modeling</strong
+        >. <br /><br />
+        Currently, I am working as a Project Associate at the Department of
+        Aerospace Engineering, IIT Mumbai, studying Venus atmospheric dynamics
+        for autonomous airship trajectory planning.
+      </p>
     </section>
 
     <section id="experience" class="container">
-        <h2>Experience</h2>
+      <h2>Experience</h2>
 
-        <div class="timeline-item">
-            <div class="timeline-title">Project Associate (Engineer)</div>
-            <div class="timeline-org">Indian Institute of Technology, Mumbai (Aerospace Dept.)</div>
-            <div class="timeline-date">Sep 2025 - Present | Mumbai, Maharashtra</div>
-            <div class="timeline-desc">
-                Advisor: Dr. Rajkumar Pant.
-                <ul>
-                    <li>Studying Venus atmospheric dynamics and structuring climate data for trajectory planning.</li>
-                    <li>Built neural network models to approximate Venusian atmospheric parameters.</li>
-                    <li>Designing simulation tools for autonomous airships and energy flux estimation.</li>
-                </ul>
-            </div>
+      <div class="timeline-item">
+        <div class="timeline-title">Project Associate (Engineer)</div>
+        <div class="timeline-org">
+          Indian Institute of Technology, Mumbai (Aerospace Dept.)
         </div>
+        <div class="timeline-date">
+          Sep 2025 - Present | Mumbai, Maharashtra
+        </div>
+        <div class="timeline-desc">
+          Advisor: Dr. Rajkumar Pant.
+          <ul>
+            <li>
+              Studying Venus atmospheric dynamics and structuring climate data
+              for trajectory planning.
+            </li>
+            <li>
+              Built neural network models to approximate Venusian atmospheric
+              parameters.
+            </li>
+            <li>
+              Designing simulation tools for autonomous airships and energy flux
+              estimation.
+            </li>
+          </ul>
+        </div>
+      </div>
 
-        <div class="timeline-item">
-            <div class="timeline-title">Research Intern</div>
-            <div class="timeline-org">Halıcıoğlu Data Science Institute, UC San Diego</div>
-            <div class="timeline-date">Aug 2024 - Jan 2025 | San Diego, California</div>
-            <div class="timeline-desc">
-                Advisor: Dr. Tauhidur Rahman.
-                <ul>
-                    <li>Developed RL frameworks for social navigation and HVAC control using NVIDIA Isaac Sim.</li>
-                    <li>Designed human-centered VR intervention studies to measure learning outcomes.</li>
-                    <li>Built IoT sensor networks for real-time aerosol concentration mapping.</li>
-                </ul>
-            </div>
+      <div class="timeline-item">
+        <div class="timeline-title">Research Intern</div>
+        <div class="timeline-org">
+          Halıcıoğlu Data Science Institute, UC San Diego
         </div>
+        <div class="timeline-date">
+          Aug 2024 - Jan 2025 | San Diego, California
+        </div>
+        <div class="timeline-desc">
+          Advisor: Dr. Tauhidur Rahman.
+          <ul>
+            <li>
+              Developed RL frameworks for social navigation and HVAC control
+              using NVIDIA Isaac Sim.
+            </li>
+            <li>
+              Designed human-centered VR intervention studies to measure
+              learning outcomes.
+            </li>
+            <li>
+              Built IoT sensor networks for real-time aerosol concentration
+              mapping.
+            </li>
+          </ul>
+        </div>
+      </div>
 
-        <div class="timeline-item">
-            <div class="timeline-title">Research Intern</div>
-            <div class="timeline-org">Halıcıoğlu Data Science Institute, UC San Diego</div>
-            <div class="timeline-date">Jul 2023 - Sep 2023 | San Diego, California</div>
-            <div class="timeline-desc">
-                <ul>
-                    <li>Engineered a dual-agent UGV platform with a cough-emulation robot and mobile HEPA filter.</li>
-                    <li>Developed IoT-based data infrastructure on Raspberry Pi for environmental monitoring.</li>
-                </ul>
-            </div>
+      <div class="timeline-item">
+        <div class="timeline-title">Research Intern</div>
+        <div class="timeline-org">
+          Halıcıoğlu Data Science Institute, UC San Diego
         </div>
+        <div class="timeline-date">
+          Jul 2023 - Sep 2023 | San Diego, California
+        </div>
+        <div class="timeline-desc">
+          <ul>
+            <li>
+              Engineered a dual-agent UGV platform with a cough-emulation robot
+              and mobile HEPA filter.
+            </li>
+            <li>
+              Developed IoT-based data infrastructure on Raspberry Pi for
+              environmental monitoring.
+            </li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section id="projects" class="container">
-        <h2>Recent Projects</h2>
-        <div class="grid-layout">
-            
-            <article class="card">
-                <span class="card-tag">Deep Learning</span>
-                <h3 class="card-title">Satellite-Based Air Pollution Forecasting</h3>
-                <div class="card-meta">Feb 2025 - May 2025</div>
-                <p class="timeline-desc">
-                    Developed a ConvLSTM-based framework for spatiotemporal forecasting of aerosol pollution across the Indian subcontinent ($R^2=0.85$). Integrated Sentinel-5P TROPOMI and ERA5 datasets.
-                </p>
-            </article>
+      <h2>Recent Projects</h2>
+      <div class="grid-layout">
+        <article class="card">
+          <span class="card-tag">Deep Learning</span>
+          <h3 class="card-title">Satellite-Based Air Pollution Forecasting</h3>
+          <div class="card-meta">Feb 2025 - May 2025</div>
+          <p class="timeline-desc">
+            Developed a ConvLSTM-based framework for spatiotemporal forecasting
+            of aerosol pollution across the Indian subcontinent ($R^2=0.85$).
+            Integrated Sentinel-5P TROPOMI and ERA5 datasets.
+          </p>
+        </article>
 
-            <article class="card">
-                <span class="card-tag">Reinforcement Learning</span>
-                <h3 class="card-title">RL Simulation for Underactuated Robotic Fish</h3>
-                <div class="card-meta">Feb 2024 - Jan 2025</div>
-                <p class="timeline-desc">
-                    Developed a biomimetic robotic fish in FishGym. Implemented PPO RL pipeline with multi-component reward functions for cruising and path-following behaviors.
-                </p>
-            </article>
+        <article class="card">
+          <span class="card-tag">Reinforcement Learning</span>
+          <h3 class="card-title">
+            RL Simulation for Underactuated Robotic Fish
+          </h3>
+          <div class="card-meta">Feb 2024 - Jan 2025</div>
+          <p class="timeline-desc">
+            Developed a biomimetic robotic fish in FishGym. Implemented PPO RL
+            pipeline with multi-component reward functions for cruising and
+            path-following behaviors.
+          </p>
+        </article>
 
-            <article class="card">
-                <span class="card-tag">Green Energy</span>
-                <h3 class="card-title">WINDEGY - Vertical Axis Wind Turbines</h3>
-                <div class="card-meta">Jan 2022 - Sep 2023</div>
-                <p class="timeline-desc">
-                    Led design and fabrication of hybrid vertical-axis wind turbine prototypes. Built a novel wind testing facility capable of 17 m/s wind speeds.
-                </p>
-            </article>
-
-        </div>
+        <article class="card">
+          <span class="card-tag">Green Energy</span>
+          <h3 class="card-title">WINDEGY - Vertical Axis Wind Turbines</h3>
+          <div class="card-meta">Jan 2022 - Sep 2023</div>
+          <p class="timeline-desc">
+            Led design and fabrication of hybrid vertical-axis wind turbine
+            prototypes. Built a novel wind testing facility capable of 17 m/s
+            wind speeds.
+          </p>
+        </article>
+      </div>
     </section>
 
     <section id="publications" class="container">
-        <h2>Publications</h2>
-        <div class="grid-layout">
-            
-            <article class="card">
-                <span class="card-tag">ICRA 2025</span>
-                <h3 class="card-title">AeroSafe: Mobile Indoor Air Purification</h3>
-                <p class="timeline-desc">
-                    <em>Tonmoy, M.T.H., ... <strong>Singh, K.</strong>, et al.</em><br>
-                    "AeroSafe: Mobile Indoor Air Purification using Aerosol Residence Time Analysis and Robotic Cough Emulator Testbed."
-                </p>
-            </article>
+      <h2>Publications</h2>
+      <div class="grid-layout">
+        <article class="card">
+          <span class="card-tag">ICRA 2025</span>
+          <h3 class="card-title">AeroSafe: Mobile Indoor Air Purification</h3>
+          <p class="timeline-desc">
+            <em>Tonmoy, M.T.H., ... <strong>Singh, K.</strong>, et al.</em
+            ><br />
+            "AeroSafe: Mobile Indoor Air Purification using Aerosol Residence
+            Time Analysis and Robotic Cough Emulator Testbed."
+          </p>
+        </article>
 
-            <article class="card">
-                <span class="card-tag">ICRA Workshop 2024</span>
-                <h3 class="card-title">Underactuated Biomimetic AUV</h3>
-                <p class="timeline-desc">
-                    <em>Manjanna, S., <strong>Singh, K.</strong>, et al.</em><br>
-                    "Underactuated Biomimetic Autonomous Underwater Vehicle for Ecosystem Monitoring". Robots for Understanding Natural Ecosystems Workshop.
-                </p>
-            </article>
+        <article class="card">
+          <span class="card-tag">ICRA Workshop 2024</span>
+          <h3 class="card-title">Underactuated Biomimetic AUV</h3>
+          <p class="timeline-desc">
+            <em>Manjanna, S., <strong>Singh, K.</strong>, et al.</em><br />
+            "Underactuated Biomimetic Autonomous Underwater Vehicle for
+            Ecosystem Monitoring". Robots for Understanding Natural Ecosystems
+            Workshop.
+          </p>
+        </article>
+      </div>
+    </section>
 
+    <section id="education" class="container">
+      <h2>Education</h2>
+
+      <div class="timeline-item">
+        <div class="timeline-title">Plaksha University</div>
+        <div class="timeline-org">
+          B.Tech. in Robotics and Autonomous Systems
         </div>
+        <div class="timeline-date">Oct 2021 - Aug 2025 | CGPA: 9.46/10.00</div>
+        <div class="timeline-desc">
+          <ul>
+            <li>Academic Achievement Award (Highest CGPA in Major).</li>
+            <li>Dean's List Award (2022-23, 2023-24).</li>
+            <li>SP Dutt Award for Innovation and Impact (Gold Medalist).</li>
+          </ul>
+        </div>
+      </div>
     </section>
 
     <section id="skills" class="container">
-        <h2>Skills</h2>
-        <div class="skills-container">
-            <span class="skill-badge">Python</span>
-            <span class="skill-badge">C++</span>
-            <span class="skill-badge">MATLAB</span>
-            <span class="skill-badge">ROS2 & Gazebo</span>
-            <span class="skill-badge">PyTorch</span>
-            <span class="skill-badge">Isaac Sim</span>
-            <span class="skill-badge">Embedded C</span>
-            <span class="skill-badge">CAD (Fusion360)</span>
-            <span class="skill-badge">PCB Design</span>
-            <span class="skill-badge">IoT (ESP32/Arduino)</span>
-        </div>
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <span class="skill-badge">Python</span>
+        <span class="skill-badge">C++</span>
+        <span class="skill-badge">MATLAB</span>
+        <span class="skill-badge">ROS2 & Gazebo</span>
+        <span class="skill-badge">PyTorch</span>
+        <span class="skill-badge">Isaac Sim</span>
+        <span class="skill-badge">Embedded C</span>
+        <span class="skill-badge">CAD (Fusion360)</span>
+        <span class="skill-badge">PCB Design</span>
+        <span class="skill-badge">IoT (ESP32/Arduino)</span>
+      </div>
     </section>
 
-    <section id="contact" class="container" style="text-align: center; margin-bottom: 50px;">
-        <h2>Get In Touch</h2>
-        <p style="margin-bottom: 30px; color: var(--text-muted);">
-            I'm always open to discussing new research collaborations and opportunities in robotics and control systems.
-        </p>
-        <a href="mailto:ksingh140303@gmail.com" class="btn">Send Email</a>
-        <div style="margin-top: 20px;">
-            <a href="PLACEHOLDER_LINKEDIN_URL" style="margin: 0 10px; font-weight: 600;">LinkedIn</a>
-            <a href="PLACEHOLDER_GITHUB_URL" style="margin: 0 10px; font-weight: 600;">GitHub</a>
-        </div>
+    <section
+      id="contact"
+      class="container"
+      style="text-align: center; margin-bottom: 50px"
+    >
+      <h2>Get In Touch</h2>
+      <p style="margin-bottom: 30px; color: var(--text-muted)">
+        I'm always open to discussing new research collaborations and
+        opportunities in robotics and control systems.
+      </p>
+      <a href="mailto:ksingh140303@gmail.com" class="btn">Send Email</a>
+      <div style="margin-top: 20px">
+        <a
+          href="PLACEHOLDER_LINKEDIN_URL"
+          style="margin: 0 10px; font-weight: 600"
+          >LinkedIn</a
+        >
+        <a
+          href="PLACEHOLDER_GITHUB_URL"
+          style="margin: 0 10px; font-weight: 600"
+          >GitHub</a
+        >
+      </div>
     </section>
 
     <footer>
-        <div class="container">
-            <p>&copy; 2025 Kaustubh Singh. All Rights Reserved.</p>
-        </div>
+      <div class="container">
+        <p>&copy; 2025 Kaustubh Singh. All Rights Reserved.</p>
+      </div>
     </footer>
 
-    <script>
-        const toggleButton = document.getElementById('theme-toggle');
-        const root = document.documentElement;
-
-        // Check for saved preference
-        const savedTheme = localStorage.getItem('theme');
-        if (savedTheme) {
-            root.setAttribute('data-theme', savedTheme);
-        }
-
-        toggleButton.addEventListener('click', () => {
-            const currentTheme = root.getAttribute('data-theme');
-            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-            
-            root.setAttribute('data-theme', newTheme);
-            localStorage.setItem('theme', newTheme);
-        });
-    </script>
-</body>
+    <script src="js/script.js"></script>
+  </body>
 </html>
