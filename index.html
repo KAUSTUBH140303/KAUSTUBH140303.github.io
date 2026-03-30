@@ -1,253 +1,233 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kaustubh Singh | Robotics & Autonomous Systems</title>
-    
-    <link rel="stylesheet" href="css/styles.css" />
-    
-    </head>
-  <body>
-    <header>
-      <div class="container nav-flex">
-        <div class="logo">KAUSTUBH SINGH</div>
-        <nav class="nav-items">
-          <ul>
-            <li><a href="#about">About</a></li>
-            <li><a href="#experience">Experience</a></li>
-            <li><a href="#projects">Projects</a></li>
-            <li><a href="#publications">Publications</a></li>
-          </ul>
-          <button id="theme-toggle" aria-label="Toggle Dark Mode">◑</button>
-        </nav>
-      </div>
-    </header>
 
-    <section class="container hero">
-      <div class="hero-text">
-        <h1>Kaustubh Singh</h1>
-        <p class="hero-subtitle">
-          Researcher in Robotics & Autonomous Systems. <br />
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Kaustubh Singh | Robotics & Autonomous Systems</title>
+
+  <link rel="stylesheet" href="css/styles.css" />
+
+</head>
+
+<body>
+  <header>
+    <div class="container nav-flex">
+      <div class="logo">KAUSTUBH SINGH</div>
+      <nav class="nav-items">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#experience">Experience</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#publications">Publications</a></li>
+        </ul>
+        <button id="theme-toggle" aria-label="Toggle Dark Mode">◑</button>
+      </nav>
+    </div>
+  </header>
+
+  <section class="container hero">
+    <div class="hero-text">
+      <h1>Kaustubh Singh</h1>
+      <p class="hero-subtitle">
+        Researcher in Robotics & Autonomous Systems. <br />
+      </p>
+      <div>
+        <a href="#contact" class="btn">Get in Touch</a>
+        <a href="https://drive.google.com/file/d/1ihP46mcOlqopjjxZJLhIEfuz-iBoFzmH/view?usp=drive_link"
+          class="btn btn-outline">View CV</a>
+      </div>
+    </div>
+    <div class="hero-image"></div>
+  </section>
+
+  <section id="about" class="container">
+    <h2>About Me</h2>
+    <p style="color: var(--text-muted); max-width: 800px">
+      I am a B.Tech graduate in Robotics and Autonomous Systems from Plaksha University with a passion for robotics and
+      autonomous systems. My research focus lies in
+      <strong>optimal control, reinforcement learning, bio-inspired robotics, and physics-informed modeling</strong>.
+      <br /><br />
+      Currently, I am working as a Project Associate at the Department of Aerospace Engineering, IIT Mumbai, studying
+      Venus atmospheric dynamics for autonomous airship trajectory planning.
+    </p>
+  </section>
+
+  <section id="experience" class="container">
+    <h2>Experience</h2>
+
+    <div class="timeline-item">
+      <div class="timeline-title">Project Associate (Engineer)</div>
+      <div class="timeline-org">
+        Indian Institute of Technology, Mumbai (Aerospace Dept.)
+      </div>
+      <div class="timeline-date">
+        Sep 2025 - Present | Mumbai, Maharashtra
+      </div>
+      <div class="timeline-desc">
+        Advisor: Dr. Rajkumar Pant.
+        <ul>
+          <li>Studying Venus atmospheric dynamics and structuring climate data for trajectory planning.</li>
+          <li>Built CaRT models to approximate Venusian atmospheric parameters.</li>
+          <li>Designing simulation tools for autonomous airships and energy flux estimation.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-title">Visiting Research Scholar</div>
+      <div class="timeline-org">
+        Halıcıoğlu Data Science Institute, UC San Diego
+      </div>
+      <div class="timeline-date">
+        Aug 2024 - Jan 2025 and Jul 2023 - Sep 2023 | San Diego, California
+      </div>
+      <div class="timeline-desc">
+        Advisor: Dr. Tauhidur Rahman.
+        <ul>
+          <li>Developed RL frameworks for social navigation and HVAC control using NVIDIA Isaac Sim.</li>
+          <li>Designed human-centered VR intervention studies to measure learning outcomes.</li>
+          <li>Engineered a dual-agent UGV platform with a cough-emulation robot and mobile HEPA filter.</li>
+          <li>Developed IoT-based data infrastructure on Raspberry Pi for environmental monitoring.</li>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="container">
+    <h2>Recent Projects</h2>
+    <div class="grid-layout">
+      <article class="card">
+        <span class="card-tag">Deep Learning</span>
+        <h3 class="card-title">Satellite-Based Air Pollution Forecasting</h3>
+        <div class="card-meta">Feb 2025 - May 2025</div>
+        <p class="timeline-desc">
+          Developed a ConvLSTM-based framework for spatiotemporal forecasting of aerosol pollution across the Indian
+          subcontinent ($R^2=0.85$).
+          Integrated Sentinel-5P TROPOMI and ERA5 datasets.
         </p>
-        <div>
-          <a href="#contact" class="btn">Get in Touch</a>
-          <a href="https://drive.google.com/file/d/1ihP46mcOlqopjjxZJLhIEfuz-iBoFzmH/view?usp=drive_link" class="btn btn-outline">View CV</a>
-        </div>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">Reinforcement Learning</span>
+        <h3 class="card-title">
+          RL Simulation for Underactuated Robotic Fish
+        </h3>
+        <div class="card-meta">Feb 2024 - Jan 2025</div>
+        <p class="timeline-desc">
+          Developed a biomimetic robotic fish in FishGym. Implemented PPO RL pipeline with multi-component reward
+          functions for cruising and
+          path-following behaviors. Built a surface-vehicle protoype to observe ﬂow parameters, compare thrust due to
+          diﬀerent propulsion modes, and
+          study the relationship between surface disturbances and bulk ﬂow.
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">Green Energy</span>
+        <h3 class="card-title">WINDEGY - Vertical Axis Wind Turbines</h3>
+        <div class="card-meta">Jan 2022 - Sep 2023</div>
+        <p class="timeline-desc">
+          Led design and fabrication of hybrid vertical-axis wind turbine prototypes. Built a novel wind testing
+          facility capable of 17 m/s
+          wind speeds.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section id="publications" class="container">
+    <h2>Publications and Presentations</h2>
+    <div class="grid-layout">
+      <article class="card">
+        <span class="card-tag">IPSC 2026</span>
+        <h3 class="card-title">Physics-Informed Surrogate Modeling</h3>
+        <p class="timeline-desc">
+          <em><strong>Singh, K.</strong>, Pant, R.</em><br />
+          "Physics-Informed Surrogate Modeling of Venus Atmospheric Properties via Constrained Gradient Boosting."
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">ICRA 2025</span>
+        <h3 class="card-title">AeroSafe: Mobile Indoor Air Purification</h3>
+        <p class="timeline-desc">
+          <em>Tonmoy, M.T.H., ... <strong>Singh, K.</strong>, et al.</em><br />
+          "AeroSafe: Mobile Indoor Air Purification using Aerosol Residence Time Analysis and Robotic Cough Emulator
+          Testbed."
+        </p>
+      </article>
+
+      <article class="card">
+        <span class="card-tag">ICRA RUNE 2024</span>
+        <h3 class="card-title">Underactuated Biomimetic AUV</h3>
+        <p class="timeline-desc">
+          <em>Manjanna, S., <strong>Singh, K.</strong>, et al.</em><br />
+          "Underactuated Biomimetic Autonomous Underwater Vehicle for Ecosystem Monitoring". Robots for Understanding
+          Natural Ecosystems
+          Workshop.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section id="education" class="container">
+    <h2>Education</h2>
+
+    <div class="timeline-item">
+      <div class="timeline-title">Plaksha University</div>
+      <div class="timeline-org">
+        B.Tech. in Robotics and Autonomous Systems
       </div>
-      <div class="hero-image"></div>
-    </section>
-
-    <section id="about" class="container">
-      <h2>About Me</h2>
-      <p style="color: var(--text-muted); max-width: 800px">
-        I am a B.Tech graduate in Robotics and Autonomous Systems from Plaksha
-        University with a passion for robotics and autonomous systems. My research focus lies in
-        <strong
-          >optimal control, reinforcement learning, bio-inspired robotics, and
-          physics-informed modeling</strong
-        >. <br /><br />
-        Currently, I am working as a Project Associate at the Department of
-        Aerospace Engineering, IIT Mumbai, studying Venus atmospheric dynamics
-        for autonomous airship trajectory planning.
-      </p>
-    </section>
-
-    <section id="experience" class="container">
-      <h2>Experience</h2>
-
-      <div class="timeline-item">
-        <div class="timeline-title">Project Associate (Engineer)</div>
-        <div class="timeline-org">
-          Indian Institute of Technology, Mumbai (Aerospace Dept.)
-        </div>
-        <div class="timeline-date">
-          Sep 2025 - Present | Mumbai, Maharashtra
-        </div>
-        <div class="timeline-desc">
-          Advisor: Dr. Rajkumar Pant.
-          <ul>
-            <li>Studying Venus atmospheric dynamics and structuring climate data for trajectory planning.</li>
-            <li>Built CaRT models to approximate Venusian atmospheric parameters.</li>
-            <li>Designing simulation tools for autonomous airships and energy flux estimation.</li>
-          </ul>
-        </div>
+      <div class="timeline-date">Oct 2021 - Aug 2025 | CGPA: 9.46/10.00</div>
+      <div class="timeline-desc">
+        <ul>
+          <li>Academic Achievement Award (Highest CGPA in Major).</li>
+          <li>Dean's List Award (2022-23, 2023-24).</li>
+          <li>SP Dutt Award for Innovation and Impact (Gold Medalist).</li>
+        </ul>
       </div>
+    </div>
+  </section>
 
-      <div class="timeline-item">
-        <div class="timeline-title">Research Intern</div>
-        <div class="timeline-org">
-          Halıcıoğlu Data Science Institute, UC San Diego
-        </div>
-        <div class="timeline-date">
-          Aug 2024 - Jan 2025 | San Diego, California
-        </div>
-        <div class="timeline-desc">
-          Advisor: Dr. Tauhidur Rahman.
-          <ul>
-            <li>Developed RL frameworks for social navigation and HVAC control using NVIDIA Isaac Sim.</li>
-            <li>Designed human-centered VR intervention studies to measure learning outcomes.</li>
-            <li>Built IoT sensor networks for real-time aerosol concentration mapping.
-            </li>
-          </ul>
-        </div>
-      </div>
+  <section id="skills" class="container">
+    <h2>Skills</h2>
+    <div class="skills-container">
+      <span class="skill-badge">Python</span>
+      <span class="skill-badge">C++</span>
+      <span class="skill-badge">MATLAB</span>
+      <span class="skill-badge">ROS2 & Gazebo</span>
+      <span class="skill-badge">PyTorch</span>
+      <span class="skill-badge">Isaac Sim</span>
+      <span class="skill-badge">Embedded C</span>
+      <span class="skill-badge">CAD (Fusion360)</span>
+      <span class="skill-badge">PCB Design</span>
+      <span class="skill-badge">IoT (ESP32/Arduino)</span>
+    </div>
+  </section>
 
-      <div class="timeline-item">
-        <div class="timeline-title">Research Intern</div>
-        <div class="timeline-org">
-          Halıcıoğlu Data Science Institute, UC San Diego
-        </div>
-        <div class="timeline-date">
-          Jul 2023 - Sep 2023 | San Diego, California
-        </div>
-        <div class="timeline-desc">
-          <ul>
-            <li>Engineered a dual-agent UGV platform with a cough-emulation robot and mobile HEPA filter.</li>
-            <li>Developed IoT-based data infrastructure on Raspberry Pi for environmental monitoring.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  <section id="contact" class="container" style="text-align: center; margin-bottom: 50px">
+    <h2>Get In Touch</h2>
+    <p style="margin-bottom: 30px; color: var(--text-muted)">
+      I'm always open to discussing new research collaborations and
+      opportunities in robotics and control systems.
+    </p>
+    <a href="mailto:ksingh140303@gmail.com" class="btn">Send Email</a>
+    <div style="margin-top: 20px">
+      <a href="https://www.linkedin.com/in/kaustubhsingh1403" style="margin: 0 10px; font-weight: 600">LinkedIn</a>
+      <a href="https://github.com/KAUSTUBH140303" style="margin: 0 10px; font-weight: 600">GitHub</a>
+      <a href="https://youtube.com/@kaustubhsingh3139?si=PI8ulU5Amv0zMet3" style="margin: 0 10px; font-weight: 600">YouTube</a>
+    </div>
+  </section>
 
-    <section id="projects" class="container">
-      <h2>Recent Projects</h2>
-      <div class="grid-layout">
-        <article class="card">
-          <span class="card-tag">Deep Learning</span>
-          <h3 class="card-title">Satellite-Based Air Pollution Forecasting</h3>
-          <div class="card-meta">Feb 2025 - May 2025</div>
-          <p class="timeline-desc">
-            Developed a ConvLSTM-based framework for spatiotemporal forecasting of aerosol pollution across the Indian subcontinent ($R^2=0.85$).
-            Integrated Sentinel-5P TROPOMI and ERA5 datasets.
-          </p>
-        </article>
+  <footer>
+    <div class="container">
+      <p>&copy; 2025 Kaustubh Singh. All Rights Reserved.</p>
+    </div>
+  </footer>
 
-        <article class="card">
-          <span class="card-tag">Reinforcement Learning</span>
-          <h3 class="card-title">
-            RL Simulation for Underactuated Robotic Fish
-          </h3>
-          <div class="card-meta">Feb 2024 - Jan 2025</div>
-          <p class="timeline-desc">
-            Developed a biomimetic robotic fish in FishGym. Implemented PPO RL pipeline with multi-component reward functions for cruising and
-            path-following behaviors.
-          </p>
-        </article>
+  <script src="js/script.js"></script>
+</body>
 
-        <article class="card">
-          <span class="card-tag">Green Energy</span>
-          <h3 class="card-title">WINDEGY - Vertical Axis Wind Turbines</h3>
-          <div class="card-meta">Jan 2022 - Sep 2023</div>
-          <p class="timeline-desc">
-            Led design and fabrication of hybrid vertical-axis wind turbine prototypes. Built a novel wind testing facility capable of 17 m/s
-            wind speeds.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="publications" class="container">
-      <h2>Publications and Presentations</h2>
-      <div class="grid-layout">
-        <article class="card">
-          <span class="card-tag">IPSC 2026</span>
-          <h3 class="card-title">Physics-Informed Surrogate Modeling</h3>
-          <p class="timeline-desc">
-            <em><strong>Singh, K.</strong>, Pant, R.</em
-            ><br />
-            "Physics-Informed Surrogate Modeling of Venus Atmospheric Properties via Constrained Gradient Boosting."
-          </p>
-        </article>
-
-        <article class="card">
-          <span class="card-tag">ICRA 2025</span>
-          <h3 class="card-title">AeroSafe: Mobile Indoor Air Purification</h3>
-          <p class="timeline-desc">
-            <em>Tonmoy, M.T.H., ... <strong>Singh, K.</strong>, et al.</em
-            ><br />
-            "AeroSafe: Mobile Indoor Air Purification using Aerosol Residence Time Analysis and Robotic Cough Emulator Testbed."
-          </p>
-        </article>
-
-        <article class="card">
-          <span class="card-tag">ICRA Workshop 2024</span>
-          <h3 class="card-title">Underactuated Biomimetic AUV</h3>
-          <p class="timeline-desc">
-            <em>Manjanna, S., <strong>Singh, K.</strong>, et al.</em><br />
-            "Underactuated Biomimetic Autonomous Underwater Vehicle for Ecosystem Monitoring". Robots for Understanding Natural Ecosystems
-            Workshop.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <section id="education" class="container">
-      <h2>Education</h2>
-
-      <div class="timeline-item">
-        <div class="timeline-title">Plaksha University</div>
-        <div class="timeline-org">
-          B.Tech. in Robotics and Autonomous Systems
-        </div>
-        <div class="timeline-date">Oct 2021 - Aug 2025 | CGPA: 9.46/10.00</div>
-        <div class="timeline-desc">
-          <ul>
-            <li>Academic Achievement Award (Highest CGPA in Major).</li>
-            <li>Dean's List Award (2022-23, 2023-24).</li>
-            <li>SP Dutt Award for Innovation and Impact (Gold Medalist).</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <section id="skills" class="container">
-      <h2>Skills</h2>
-      <div class="skills-container">
-        <span class="skill-badge">Python</span>
-        <span class="skill-badge">C++</span>
-        <span class="skill-badge">MATLAB</span>
-        <span class="skill-badge">ROS2 & Gazebo</span>
-        <span class="skill-badge">PyTorch</span>
-        <span class="skill-badge">Isaac Sim</span>
-        <span class="skill-badge">Embedded C</span>
-        <span class="skill-badge">CAD (Fusion360)</span>
-        <span class="skill-badge">PCB Design</span>
-        <span class="skill-badge">IoT (ESP32/Arduino)</span>
-      </div>
-    </section>
-
-    <section
-      id="contact"
-      class="container"
-      style="text-align: center; margin-bottom: 50px"
-    >
-      <h2>Get In Touch</h2>
-      <p style="margin-bottom: 30px; color: var(--text-muted)">
-        I'm always open to discussing new research collaborations and
-        opportunities in robotics and control systems.
-      </p>
-      <a href="mailto:ksingh140303@gmail.com" class="btn">Send Email</a>
-      <div style="margin-top: 20px">
-        <a
-          href="https://www.linkedin.com/in/kaustubhsingh1403"
-          style="margin: 0 10px; font-weight: 600"
-          >LinkedIn</a
-        >
-        <a
-          href="https://github.com/KAUSTUBH140303"
-          style="margin: 0 10px; font-weight: 600"
-          >GitHub</a
-        >
-      </div>
-    </section>
-
-    <footer>
-      <div class="container">
-        <p>&copy; 2025 Kaustubh Singh. All Rights Reserved.</p>
-      </div>
-    </footer>
-
-    <script src="js/script.js"></script>
-  </body>
 </html>
