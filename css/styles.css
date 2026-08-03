@@ -167,7 +167,7 @@ nav a:hover {
   background-color: var(--bg-card);
   border: 2px solid var(--accent-color);
   overflow: hidden;
-  background-image: url("../dp.png"); /* REPLACE THIS */
+  background-image: url("../dp.jpeg"); /* REPLACE THIS */
   background-size: cover;
   background-position: center;
 }
