@@ -57,11 +57,22 @@
     <h2>Publications and Presentations</h2>
     <div class="grid-layout">
       <article class="card">
+        <span class="card-tag">NCMDAO 2026</span>
+        <h3 class="card-title">Wind-Aware Trajectory Optimization</h3>
+        <p class="timeline-desc">
+          <em><strong>Singh, K.</strong>, Pant, R.</em><br />
+          "Wind-Aware Trajectory Optimization for a Maneuverable Venus Airship." National Conference on
+          Multidisciplinary Analysis and Optimization. (Accepted)
+        </p>
+      </article>
+
+      <article class="card">
         <span class="card-tag">IPSC 2026</span>
         <h3 class="card-title">Physics-Informed Surrogate Modeling</h3>
         <p class="timeline-desc">
           <em><strong>Singh, K.</strong>, Pant, R.</em><br />
           "Physics-Informed Surrogate Modeling of Venus Atmospheric Properties via Constrained Gradient Boosting."
+          IPSA Indian Planetary Science Conference.
         </p>
       </article>
 
@@ -69,9 +80,9 @@
         <span class="card-tag">ICRA 2025</span>
         <h3 class="card-title">AeroSafe: Mobile Indoor Air Purification</h3>
         <p class="timeline-desc">
-          <em>Tonmoy, M.T.H., ... <strong>Singh, K.</strong>, et al.</em><br />
+          <em>Tonmoy, M.T.H., <strong>Singh, K.</strong>, et al.</em><br />
           "AeroSafe: Mobile Indoor Air Purification using Aerosol Residence Time Analysis and Robotic Cough Emulator
-          Testbed."
+          Testbed." IEEE ICRA, pp. 8128-8135.
         </p>
       </article>
 
@@ -92,36 +103,80 @@
     <h2>Experience</h2>
 
     <div class="timeline-item">
-      <div class="timeline-title">Project Associate (Engineer)</div>
+      <div class="timeline-title">Graduate Student Researcher</div>
       <div class="timeline-org">
-        Indian Institute of Technology, Mumbai (Aerospace Dept.)
+        <a href="https://www.youtube.com/@marvlresearchlab">MARVL Lab</a>, Singapore University of Technology and Design
       </div>
       <div class="timeline-date">
-        Sep 2025 - Present | Mumbai, Maharashtra
+        Sep 2026 - Present | Singapore
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-title">Project Associate (Engineer)</div>
+      <div class="timeline-org">
+        <a href="https://www.iitb.ac.in">Indian Institute of Technology, Mumbai</a> (Aerospace Dept.)
+      </div>
+      <div class="timeline-date">
+        Sep 2025 - Aug 2026 | Mumbai, Maharashtra
       </div>
       <div class="timeline-desc">
         Advisor: Dr. Rajkumar Pant.
         <ul>
-          <li>Studied Venus atmospheric dynamics and climate data for developing aerial trajectory planning algorithms.</li>
+          <li>Analyzed Venusian atmospheric variables (density, temperature, wind magnitude and direction, solar flux)
+            to identify dominant influencing factors via mutual information scores.</li>
+          <li>Developed non-linear predictive models (CaRT and neural networks) to estimate atmospheric state variables
+            across spatial and temporal domains.</li>
+          <li>Built an interactive 3D trajectory visualization tool to animate autonomous airship flight paths over a
+            planetary model.</li>
         </ul>
       </div>
     </div>
 
     <div class="timeline-item">
-      <div class="timeline-title">Visiting Research Scholar</div>
+      <div class="timeline-title">Research Intern</div>
       <div class="timeline-org">
-        Halıcıoğlu Data Science Institute, UC San Diego
+        <a href="https://mosaic-laboratory.github.io">MOSAIC Lab</a>, Halıcıoğlu Data Science Institute, UC San Diego
       </div>
       <div class="timeline-date">
-        Aug 2024 - Jan 2025 and Jul 2023 - Sep 2023 | San Diego, California
+        Aug 2024 - Jan 2025 | San Diego, California
       </div>
       <div class="timeline-desc">
         Advisor: Dr. Tauhidur Rahman.
         <ul>
-          <li>Developed a dual-agent UGV platform with a cough-emulation robot and mobile HEPA filter which were used for 
-              building RL frameworks for social navigation.</li>
-          </li>
+          <li>Developed RL frameworks for social navigation and HVAC control, integrating NVIDIA Isaac Sim, PyTorch,
+            and custom Gym environments with CFD-based aerosol dispersion models.</li>
+          <li>Built a wireless particulate monitoring network (ESP8266 + Sensirion sensors, Flask data streaming) for
+            real-time aerosol concentration mapping.</li>
+          <li>Engineered a dual-agent UGV platform with a cough-emulation robot and a mobile HEPA filter agent for
+            real-time detection, mapping, and active air purification experiments.</li>
         </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="teaching" class="container">
+    <h2>Teaching</h2>
+
+    <div class="timeline-item">
+      <div class="timeline-title">Senior Teaching Assistant</div>
+      <div class="timeline-org">Young Tech Scholars</div>
+      <div class="timeline-date">2026</div>
+      <div class="timeline-desc">
+        Designed and delivered a two-week STEM course for high school students on lighter-than-air robotics, covering
+        buoyancy and aerodynamics, PCB assembly and sensor calibration, WiFi camera streaming, and CV-driven autonomous
+        navigation and object identification.
+      </div>
+    </div>
+
+    <div class="timeline-item">
+      <div class="timeline-title">Invited Lecturer</div>
+      <div class="timeline-org">Indian Institute of Technology, Mumbai</div>
+      <div class="timeline-date">2026</div>
+      <div class="timeline-desc">
+        Delivered two lectures on biomimetic airships (design principles, fish-inspired propulsion, efficiency analysis,
+        actuation methods) and atmospheric modelling of Venus for autonomous airship navigation. Mentored undergraduate
+        teams on their course projects.
       </div>
     </div>
   </section>
@@ -134,9 +189,10 @@
         <h3 class="card-title">Satellite-Based Air Pollution Forecasting</h3>
         <div class="card-meta">Feb 2025 - May 2025</div>
         <p class="timeline-desc">
-          Developed a ConvLSTM-based framework for spatiotemporal forecasting of aerosol pollution across the Indian
-          subcontinent ($R^2=0.85$).
-          Integrated Sentinel-5P TROPOMI and ERA5 datasets.
+          Investigated the role of meteorological and spatial covariates in predicting air pollution across the Indian
+          subcontinent with a ConvLSTM-based spatiotemporal forecasting framework ($R^2=0.85$), using multi-source
+          satellite data including Sentinel-5P TROPOMI and ERA5.
+          <a href="https://github.com/KAUSTUBH140303/metpollution-geods">GitHub</a>
         </p>
       </article>
 
@@ -174,11 +230,8 @@
       <div class="timeline-org">
           PhD: Information Systems Technology and Design
       </div>
-      <div class="timeline-date">Sep 2026 - Present | Current GPA: x/x</div>
+      <div class="timeline-date">Sep 2026 - Present</div>
       <div class="timeline-desc">
-        <!--<ul>
-          <li>
-        </ul>-->
       </div>
     </div>
     <div class="timeline-item">
@@ -186,9 +239,33 @@
       <div class="timeline-org">
         B.Tech. in Robotics and Autonomous Systems
       </div>
-      <div class="timeline-date">Oct 2021 - Aug 2025 | CGPA: 9.46/10.00</div>
+      <div class="timeline-date">Oct 2021 - May 2025 | CGPA: 9.48/10.00</div>
       <div class="timeline-desc">
       </div>
+    </div>
+  </section>
+
+  <section id="awards" class="container">
+    <h2>Awards</h2>
+    <div class="timeline-item">
+      <div class="timeline-title">Maritime RobotX Challenge 2026</div>
+      <div class="timeline-date">Nov 2026</div>
+      <div class="timeline-desc">4th place in the autonomy challenge.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title">Academic Achievement Award</div>
+      <div class="timeline-date">Sep 2025</div>
+      <div class="timeline-desc">Highest CGPA in the Robotics and Autonomous Systems major.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title">Dean's List Award</div>
+      <div class="timeline-date">Dec 2023, Nov 2024</div>
+      <div class="timeline-desc">Academic distinction for the 2022-23 and 2023-24 academic sessions.</div>
+    </div>
+    <div class="timeline-item">
+      <div class="timeline-title">SP Dutt Award for Innovation and Impact</div>
+      <div class="timeline-date">Mar 2023</div>
+      <div class="timeline-desc">Gold Medalist for innovation in the green energy sector.</div>
     </div>
   </section>
 
@@ -196,13 +273,16 @@
     <h2>Skills</h2>
     <div class="skills-container">
       <span class="skill-badge">Python</span>
-      <span class="skill-badge">C++</span>
+      <span class="skill-badge">C / C++</span>
       <span class="skill-badge">MATLAB</span>
       <!--<span class="skill-badge">ROS2 & Gazebo</span>-->
       <span class="skill-badge">PyTorch</span>
+      <span class="skill-badge">Deep Learning</span>
+      <span class="skill-badge">Statistical Modelling</span>
       <span class="skill-badge">Embedded C</span>
       <span class="skill-badge">CAD (Fusion360, OnShape)</span>
       <span class="skill-badge">PCB Design (KiCad)</span>
+      <span class="skill-badge">Arduino / ESP32 / Raspberry Pi</span>
       <span class="skill-badge">IoT</span>
     </div>
   </section>
